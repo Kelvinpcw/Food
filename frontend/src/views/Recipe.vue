@@ -338,7 +338,7 @@
             </div>
 
             <!-- pass the ingredient info to chat -->
-            <Chat :ingredients="recipe.extendedIngredients" />
+            <Chat :ingredients="recipe.extendedIngredients" :servingsize="recipe.servings"/>
         </div>
     </div>
 </template>
@@ -546,7 +546,7 @@
                         },
                     })
                     .then(response => {
-                        console.log(response.data);
+                        // console.log(response.data);
                         this.recipeNutrition = response.data;
                     })
                     .catch(error => {
