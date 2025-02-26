@@ -46,7 +46,29 @@
                     </div>
                     <!-- Health Score -->
                     <div class="text-lg font-semibold text-gray-700">
-                        <span>Health Score:</span> <span>{{ recipe.healthScore }}</span>
+                        <span>Health Score:</span> 
+                        <div class="mt-2 flex items-center space-x-2">
+                            <!-- Progress Bar -->
+                            <div class="w-2/5 h-4 bg-gray-200 rounded-lg overflow-hidden">
+                                <div 
+                                    class="h-full"
+                                    :class="{
+                                        'bg-red-400': recipe.healthScore < 30,
+                                        'bg-yellow-400': recipe.healthScore >= 30 && recipe.healthScore < 70,
+                                        'bg-green-400': recipe.healthScore >= 70
+                                    }" 
+                                    :style="{ width: `${recipe.healthScore}%` }">
+                                </div>
+                            </div>
+                            <!-- Score Text -->
+                            <span :class="{
+                                        'text-red-600': recipe.healthScore < 30,
+                                        'text-yellow-600': recipe.healthScore >= 30 && recipe.healthScore < 70,
+                                        'text-green-600': recipe.healthScore >= 70
+                                    }">
+                                {{ recipe.healthScore }}/100
+                            </span>
+                        </div>
                     </div>
                     <!-- Meal types -->
                     <div class="text-lg font-semibold text-gray-700">
